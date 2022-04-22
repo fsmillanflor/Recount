@@ -1,0 +1,74 @@
+using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    
+    namespace Recount
+    {
+    class Program
+    {
+    static void Main(string[] args)
+    {
+    IDictionary<string, int> candidates = new Dictionary<string, int>();
+    string name;
+    int x, maxCount = 0, countOfMaxCount = 0;
+    string maxName = "Piya";
+    int count = 0;
+    
+    do
+    {
+    name = Console.ReadLine();
+    if (name == "***")
+    break;
+    if (name.Trim().Equals(""))
+    continue;
+    
+    for (x = 0; x < name.Length; x++)
+    if (name[x] != '-' && name[x] != ' ' && Char.IsLetterOrDigit(name, x) == false)
+    break;
+    
+    
+    if (x != name.Length)
+    {
+    //Console.WriteLine(" invalid name ");
+    continue;
+    }
+    count++;
+    if (candidates.ContainsKey(name))
+    {
+    candidates[name] += 1;
+    
+    if (candidates[name] > maxCount)
+    {
+    maxName = name;
+    maxCount = candidates[name];
+    countOfMaxCount = 1;
+    }
+    else if (candidates[name] == maxCount)
+    countOfMaxCount += 1;
+    }
+    else   // candidate not in dictionary.
+    {
+    if (maxCount == 0)
+    {
+    maxName = name;
+    maxCount = 1;
+    countOfMaxCount = 1;
+    }
+    candidates.Add(name, 1);
+    if (maxCount == 1)
+    countOfMaxCount += 1;
+    
+    }
+    } while (name != "***");
+    
+    
+    if (count <= 1 || countOfMaxCount > 1)
+    Console.WriteLine("Runoff!");
+    else
+    Console.WriteLine(maxName);
+    //Console.WriteLine(""+count);
+    
+    }
+    
+    }
+    }
