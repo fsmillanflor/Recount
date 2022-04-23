@@ -11,7 +11,7 @@ using System;
     IDictionary<string, int> candidates = new Dictionary<string, int>();
     string name;
     int x, maxCount = 0, countOfMaxCount = 0;
-    string maxName = "Piya";
+    string maxName = "";
     int count = 0;
     
     do
@@ -66,8 +66,7 @@ using System;
     Console.WriteLine("Runoff!");
     else
     Console.WriteLine(maxName);
-    //Console.WriteLine(""+count);
-    
+ 
     }
     
     }
